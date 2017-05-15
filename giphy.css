@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+}
+
+#gifBox {
+	float: left;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 78.5%;
+}
+
+#buttonBox {
+	float: right;
+	width: 17.5%;
+
+}
+
+#emotionId {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#text {
+	text-align: center;
+}
+
+#buttonBox, #gifBox {
+	margin: .5em;
+	padding: .5em;
+	border: black 1px solid;
+}
