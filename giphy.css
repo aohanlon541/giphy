@@ -2,18 +2,24 @@
 	box-sizing: border-box;
 }
 
+body {
+	background-image: url(background.png);
+}
+
+#text {
+	color: white;
+}
+
 #gifBox {
 	float: left;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: 78.5%;
+	padding-top: .5em;
 }
 
 #buttonBox {
 	float: right;
-	width: 17.5%;
-
 }
 
 #emotionId {
@@ -26,8 +32,13 @@
 	text-align: center;
 }
 
-#buttonBox, #gifBox {
+#buttonBox , #gifBox {
 	margin: .5em;
-	padding: .5em;
-	border: black 1px solid;
+	background-color: white;
+	text-align: center;
+	padding-bottom: .5em;
+}
+
+img {
+	padding: .25em;
 }

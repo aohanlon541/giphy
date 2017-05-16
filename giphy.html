@@ -3,44 +3,56 @@
 <head>
 	<title>Giphy</title>
 	<link rel="stylesheet" type="text/css" href="giphy.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+	<div class="row" id="text">
+		<h1>GIF IT</h1>
+		<p>Click the buttons on the rights or add your own for your perfect gif.</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8" id="gifBox">
+			<h3 id="instruction">Click the button to add gifs!</h3>
+		</div>
 
-<div id="text">
-	<h1>Your Mood. In Gifs.</h1>
-	<p>Click the buttons on the rights or add your own for your perfect gif.</p>
+		<div class="col-md-3">
+			<div class="panel panel-default" id="buttonBox">
+	  			<div class="panel-heading">Buttons</div>
+	  				<div class="panel-body">
+	  				</div>
+
+				<form>
+					<p>Add an emotion</p>
+					<input type="text" id="addedEmotion">
+					<button class="btn btn-default" id="submitButton"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+				</form>	
+			</div>	
+		</div>
+	</div>	
 </div>
-
-<div id="gifBox"></div>
-
-<div id="buttonBox">
-	<div id="buttons"></div>
-
-	<form>
-		<p>Add an emotion</p>
-		<input type="text" id="addedEmotion">
-		<button id="submitButton">Add!</button>
-	</form>	
-</div>
-
 
 
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 
 var buttons = ["happy", "excited", "angry", "sad", "surprised", "grossed out", "love"];
 
 function createButtons() {
-	$("#buttons").empty();
+	$(".panel-body").empty();
 
 	for (i = 0; i < buttons.length; i++) {	
 	var newButton = $("<button>");
-	newButton.attr("class", "emotionId");
+	newButton.attr("class", "emotionId btn btn-default");
+
 	newButton.attr("data-emotion", buttons[i]);
 	newButton.text(buttons[i]);
 
-	$("#buttons").append(newButton);
+	$(".panel-body").append(newButton);
 	}
 }
 
@@ -75,17 +87,24 @@ function printGif() {
 			newGif.attr("data-still", still)
 			newGif.attr("data-animate", gif);
 			newGif.attr("class", "gif");
+			newGif.attr("data-toggle", "tooltip");
+			newGif.attr("data-placement", "bottom");
+			newGif.attr("title", "Rating: " + rating);
 
-			newRating.text("Rating: " + rating);
+			// newRating.text("Rating: " + rating);
 
 			newDiv.append(newGif);
-			newDiv.append(newRating);
+			// newDiv.append(newRating);
 
-			$("#gifBox").prepend(newDiv);		}
+			$("#gifBox").prepend(newDiv);	
+			$("#instruction").empty();
+		}
 
 	});
 
 }
+
+
 
 function makeNewButton() {
 	event.preventDefault();
@@ -102,6 +121,9 @@ function pause() {
 	if (state === "still") {
 		$(this).attr("src", $(this).attr("data-animate"));
 		      $(this).attr("data-state", "animate");
+		$(function () {
+ 			 $('[data-toggle="tooltip"]').tooltip()
+		})      
 	}
 	else {
 		$(this).attr("src", $(this).attr("data-still"));
