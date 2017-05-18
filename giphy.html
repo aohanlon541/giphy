@@ -13,43 +13,25 @@
 		<h1>GIF IT</h1>
 		<p>Click the buttons on the rights or add your own for your perfect gif.</p>
 
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Gif Categories</button>
-
-		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="buttonBox">
-  			<div class="modal-dialog modal-sm" role="document">
-   			 <div class="modal-content">
-				<div id="btns"></div>
-									
-				<form>
-					<p>Add a category</p>
-					<input type="text" id="addedEmotion">
-					<button class="btn btn-default" id="submitButton"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-				</form>	
-
-			</div>	
-		</div>
-	</div>
-	</div>
-
 	</div>
 	<div class="row">
 		<div class="col-md-8" id="gifBox">
 			<h3 id="instruction">Click the button to add gifs!</h3>
 		</div>
 
-		<!-- <div class="col-md-3">
+		<div class="col-md-3">
 			<div class="panel panel-default" id="buttonBox">
 	  			<div class="panel-heading">Buttons</div>
+		  			<form>
+						<p>Add your own</p>
+						<input type="text" id="addedEmotion">
+						<button class="btn btn-default" id="submitButton"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+					</form>		
+
 	  				<div class="panel-body">
 	  				</div>
-
-				<form>
-					<p>Add a category</p>
-					<input type="text" id="addedEmotion">
-					<button class="btn btn-default" id="submitButton"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-				</form>	
 			</div>	
-		</div> -->
+		</div>
 	</div>	
 </div>
 
@@ -63,7 +45,7 @@
 var buttons = ["happy", "excited", "angry", "sad", "surprised", "grossed out", "love"];
 
 function createButtons() {
-	$("#btns").empty();
+	$(".panel-body").empty();
 
 	for (i = 0; i < buttons.length; i++) {	
 	var newButton = $("<button>");
@@ -72,7 +54,7 @@ function createButtons() {
 	newButton.attr("data-emotion", buttons[i]);
 	newButton.text(buttons[i]);
 
-	$("#btns").append(newButton);
+	$(".panel-body").prepend(newButton);
 	}
 }
 
@@ -123,7 +105,6 @@ function printGif() {
 	});
 
 }
-
 
 
 function makeNewButton() {
