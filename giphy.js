@@ -16,7 +16,7 @@ function createButtons() {
 
 function printGif() {
 	var q = $(this).attr("data-emotion");
-	var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + q + "&limit=10&rating=pg-13&api_key=dc6zaTOxFJmzC";
+	var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + q + "&limit=10&rating=pg-13&api_key=dc6zaTOxFJmzC";
 	console.log(this);
 
 	$.ajax({
